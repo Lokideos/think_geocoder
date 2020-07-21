@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Coordinates
-  class GetCoordinateService
+  class GetCoordinatesService
     prepend BasicService
     include Validations
 
