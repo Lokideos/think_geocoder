@@ -1,0 +1,5 @@
+ru:
+  contracts:
+    errors:
+      coordinates:
+        nil: 'Город не найден'
