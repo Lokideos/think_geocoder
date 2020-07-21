@@ -66,7 +66,7 @@ RSpec.describe Application, type: :routes do
 
       expect(last_response.status).to eq 200
       expect(response_body).to eq({
-                                    'ad_id' => id.to_s,
+                                    'ad_id' => id,
                                     'coordinates' => {
                                       'coordinates' => coordinates
                                     }

@@ -3,7 +3,7 @@
 class GeocoderParamsContract < Dry::Validation::Contract
   params do
     required(:ad).hash do
-      required(:id).value(:string)
+      required(:id).value(:integer)
       required(:city).value(:string)
     end
   end
