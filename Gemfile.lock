@@ -103,6 +103,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (~> 6.0.0)
   config (~> 2.2.1)
   database_cleaner-sequel (~> 1.8.0)
   dry-initializer (~> 3.0.3)
