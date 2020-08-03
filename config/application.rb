@@ -1,19 +1,11 @@
 # frozen_string_literal: true
 
 class Application < Roda
-  plugin :error_handler do |e|
-    case e
-    when Validations::InvalidParams, KeyError
-      response['Content-Type'] = 'application/json'
-      response.status = 422
-      error_response I18n.t(:missing_parameters, scope: 'api.errors')
-    else
-      raise
-    end
-  end
   plugin(:not_found) { { error: 'Not found' } }
   plugin :environments
   plugin :json_parser
+  plugin :error_handler
+  include Errors
   include Validations
   include ApiErrors
 
