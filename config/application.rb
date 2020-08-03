@@ -20,15 +20,16 @@ class Application < Roda
       r.on 'geocode' do
         r.post do
           geocoder_params = validate_with!(GeocoderParamsContract, params).to_h
-          result = Coordinates::GetCoordinatesService.call(geocoder_params[:ad][:city])
+
+          coordinates = Geocoder.geocode(geocoder_params[:ad][:city])
           response['Content-Type'] = 'application/json'
 
-          if result.success?
+          if coordinates.present?
             response.status = 200
-            { ad_id: geocoder_params[:ad][:id], coordinates: result.coordinates }.to_json
+            { ad_id: geocoder_params[:ad][:id], coordinates: coordinates }.to_json
           else
             response.status = 404
-            error_response(result.errors)
+            {}.to_json
           end
         end
       end
